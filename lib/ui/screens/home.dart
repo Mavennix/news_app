@@ -43,8 +43,8 @@ List<Articles> favouriteArticles;
   Widget build(BuildContext context) {
     return BaseUi<HomeViewModel>(
         onModelReady: (model) async {
-           topArticles = await model.getTopNews();
            favouriteArticles = await model.getFavouriteNews();
+           topArticles = await model.getTopNews();
         },
         builder: (_, model, child) =>  Scaffold(
       appBar: AppBar(
@@ -72,10 +72,10 @@ List<Articles> favouriteArticles;
               onPressed: () {})
         ],
       ),
-      body:  model.state == ViewState.Busy
+      body: model.state == ViewState.Busy
             ? Center(
               child: Text('loading...'),
-            ):IndexedStack(
+            ) :  IndexedStack(
         index: _currentIndex,
         children: <Widget>[CurrentNews(articles: topArticles,), FavouriteNews(articles: favouriteArticles,), ShareNews()],
       ),

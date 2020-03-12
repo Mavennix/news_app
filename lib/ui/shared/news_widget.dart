@@ -18,12 +18,12 @@ class _NewsWidgetState extends State<NewsWidget> {
         children: <Widget>[
           Flexible(
             flex: 2,
-            child: Image.network(
+            child:  widget.article.urlToImage != null ? Image.network(
               widget.article.urlToImage,
               height: 100.0,
               width: 100.0,
               fit: BoxFit.cover,
-            ),
+            ) : Container(),
           ),
           Flexible(
             flex: 5,
@@ -32,11 +32,12 @@ class _NewsWidgetState extends State<NewsWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(widget.article.description,
-                      style: Theme.of(context).textTheme.body2),
+                 
+                        widget.article.description != null ?  Text(widget.article.description,
+                      style: Theme.of(context).textTheme.body2) : Container(),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.015),
-                  Text(widget.article.source.name,
-                      style: Theme.of(context).textTheme.caption),
+                 widget.article.source.name != null ? Text(widget.article.source.name,
+                      style: Theme.of(context).textTheme.caption) : Container(),
                 ],
               ),
             ),

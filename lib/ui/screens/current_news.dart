@@ -21,13 +21,9 @@ class _CurrentNewsState extends State<CurrentNews> {
   Widget build(BuildContext context) {
      return BaseUi<CurrentNewsViewModel>(
         onModelReady: (model) async {
-          setState(() {
             articles = widget.articles;
-          });
         },
-        builder: (_, model, child) =>   Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
+        builder: (_, model, child) =>   SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 18.0),
@@ -141,6 +137,6 @@ class _CurrentNewsState extends State<CurrentNews> {
           ),
         ),
       ),
-    ));
+    );
   }
 }
